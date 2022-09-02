@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Core.Persistence.Paging;
 using Kodlama.io.Devs.Application.Features.Languages.Commands.CreateLanguage;
+using Kodlama.io.Devs.Application.Features.Languages.Commands.DeleteLanguage;
 using Kodlama.io.Devs.Application.Features.Languages.Commands.UpdateLanguage;
 using Kodlama.io.Devs.Application.Features.Languages.DTOs;
 using Kodlama.io.Devs.Application.Features.Languages.Models;
@@ -22,6 +23,9 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Profiles
 
             CreateMap<Language,UpdateLanguageDto>().ReverseMap();
             CreateMap<Language, UpdateLanguageCommand>().ReverseMap();
+
+            CreateMap<Language, DeleteLanguageDto>().ReverseMap();
+            CreateMap<Language, DeleteLanguageCommand>().ReverseMap();
 
             CreateMap<IPaginate<Language>, LanguageListModel>().ReverseMap();
             CreateMap<Language, LanguageListDto>().ReverseMap();

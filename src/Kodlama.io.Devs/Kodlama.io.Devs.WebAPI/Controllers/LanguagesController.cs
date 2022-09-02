@@ -1,5 +1,6 @@
 ﻿using Core.Application.Requests;
 using Kodlama.io.Devs.Application.Features.Languages.Commands.CreateLanguage;
+using Kodlama.io.Devs.Application.Features.Languages.Commands.DeleteLanguage;
 using Kodlama.io.Devs.Application.Features.Languages.Commands.UpdateLanguage;
 using Kodlama.io.Devs.Application.Features.Languages.DTOs;
 using Kodlama.io.Devs.Application.Features.Languages.Models;
@@ -33,6 +34,13 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateLanguageCommand updateLanguageCommand)
         {
             UpdateLanguageDto result = await Mediator.Send(updateLanguageCommand);
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] DeleteLanguageCommand deleteLanguageCommand)
+        {
+            DeleteLanguageDto result = await Mediator.Send(deleteLanguageCommand);
             return Ok(result);
         }
 
