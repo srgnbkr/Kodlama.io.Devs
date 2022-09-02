@@ -24,7 +24,7 @@ namespace Kodlama.io.Devs.Persistence.SeedDataBogus
 
             #region Connection
             //var dbContextBuilder = new DbContextOptionsBuilder();
-            //dbContextBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=RentACarCampDb; Trusted_Connection=True;");
+            //dbContextBuilder.UseSqlServer(configuration.GetConnectionString("KodlamaIOConnectionString"));
 
             //var context = new BaseDbContext(dbContextBuilder.Options);
             #endregion

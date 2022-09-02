@@ -1,0 +1,20 @@
+﻿using FluentValidation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Kodlama.io.Devs.Application.Features.Languages.Commands.CreateLanguage
+{
+    public class CreateLanguageCommandValidator : AbstractValidator<CreateLanguageCommand>
+    {
+        public CreateLanguageCommandValidator()
+        {
+            RuleFor(c => c.Name).NotEmpty().WithMessage("Name is required");
+            RuleFor(c => c.IsActive).NotEmpty().WithMessage("IsActive is required");
+
+            RuleFor(c => c.IsActive).NotEmpty();
+        }
+    }
+}
