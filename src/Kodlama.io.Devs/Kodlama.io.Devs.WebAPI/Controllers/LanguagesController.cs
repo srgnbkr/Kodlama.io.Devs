@@ -4,6 +4,7 @@ using Kodlama.io.Devs.Application.Features.Languages.Commands.DeleteLanguage;
 using Kodlama.io.Devs.Application.Features.Languages.Commands.UpdateLanguage;
 using Kodlama.io.Devs.Application.Features.Languages.DTOs;
 using Kodlama.io.Devs.Application.Features.Languages.Models;
+using Kodlama.io.Devs.Application.Features.Languages.Queries.GetByIdLanguage;
 using Kodlama.io.Devs.Application.Features.Languages.Queries.GetListLanguage;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -42,6 +43,13 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
         {
             DeleteLanguageDto result = await Mediator.Send(deleteLanguageCommand);
             return Ok(result);
+        }
+
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetByIdLanguageQuery getByIdLanguageQuery)
+        {
+            LanguageGetByIdDto languageGetByIdDto = await Mediator.Send(getByIdLanguageQuery);
+            return Ok(languageGetByIdDto);
         }
 
     }
