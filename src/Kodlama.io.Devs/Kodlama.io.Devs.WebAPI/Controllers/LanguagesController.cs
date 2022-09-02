@@ -1,5 +1,6 @@
 ﻿using Core.Application.Requests;
 using Kodlama.io.Devs.Application.Features.Languages.Commands.CreateLanguage;
+using Kodlama.io.Devs.Application.Features.Languages.Commands.UpdateLanguage;
 using Kodlama.io.Devs.Application.Features.Languages.DTOs;
 using Kodlama.io.Devs.Application.Features.Languages.Models;
 using Kodlama.io.Devs.Application.Features.Languages.Queries.GetListLanguage;
@@ -27,5 +28,13 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
             CreateLanguageDto result = await Mediator.Send(createLanguageCommand);
             return Created("", result);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateLanguageCommand updateLanguageCommand)
+        {
+            UpdateLanguageDto result = await Mediator.Send(updateLanguageCommand);
+            return Ok(result);
+        }
+
     }
 }
