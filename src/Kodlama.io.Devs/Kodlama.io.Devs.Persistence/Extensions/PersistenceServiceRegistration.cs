@@ -1,6 +1,7 @@
 ﻿using Kodlama.io.Devs.Application.Services.Repositories;
 using Kodlama.io.Devs.Persistence.Contexts;
 using Kodlama.io.Devs.Persistence.Repositories;
+using Kodlama.io.Devs.Persistence.SeedDataBogus;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,11 @@ namespace Kodlama.io.Devs.Persistence.Extensions
                                                         configuration.GetConnectionString("KodlamaIOConnectionString")));
 
             services.AddScoped<ILanguageRepository, LanguageRepository>();
+
+
+            //Apiyi her başlattığımızda sahte data ekler.
+            //var seedData = new SeedData();
+            //seedData.SeedAsync(configuration).GetAwaiter().GetResult();
 
             return services;
         }

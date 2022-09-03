@@ -26,7 +26,7 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Queries.GetListLanguage
             public GetListLanguageQueryHandler(ILanguageRepository languageRepository,IMapper mapper)
             {
                 _languageRepository = languageRepository;
-                _mapper = mapper;
+                _mapper = mapper; 
             }
 
             

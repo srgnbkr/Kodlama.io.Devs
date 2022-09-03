@@ -2,6 +2,7 @@
 using Core.Persistence.Paging;
 using Kodlama.io.Devs.Application.Features.Languages.Commands.CreateLanguage;
 using Kodlama.io.Devs.Application.Features.Languages.Commands.DeleteLanguage;
+using Kodlama.io.Devs.Application.Features.Languages.Commands.SoftDeleteLanguage;
 using Kodlama.io.Devs.Application.Features.Languages.Commands.UpdateLanguage;
 using Kodlama.io.Devs.Application.Features.Languages.DTOs;
 using Kodlama.io.Devs.Application.Features.Languages.Models;
@@ -27,8 +28,13 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Profiles
             CreateMap<Language, DeleteLanguageDto>().ReverseMap();
             CreateMap<Language, DeleteLanguageCommand>().ReverseMap();
 
+            CreateMap<Language, SoftDeleteLanguageDto>().ReverseMap();
+            CreateMap<Language, SoftDeleteLanguageCommand>().ReverseMap();
+
             CreateMap<IPaginate<Language>, LanguageListModel>().ReverseMap();
             CreateMap<Language, LanguageListDto>().ReverseMap();
+
+
 
             CreateMap<Language, LanguageGetByIdDto>().ReverseMap();
         }

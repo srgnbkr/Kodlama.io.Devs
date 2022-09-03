@@ -23,10 +23,10 @@ namespace Kodlama.io.Devs.Persistence.SeedDataBogus
         {
 
             #region Connection
-            //var dbContextBuilder = new DbContextOptionsBuilder();
-            //dbContextBuilder.UseSqlServer(configuration.GetConnectionString("KodlamaIOConnectionString"));
+            var dbContextBuilder = new DbContextOptionsBuilder();
+            dbContextBuilder.UseSqlServer(configuration.GetConnectionString("KodlamaIOConnectionString"));
 
-            //var context = new BaseDbContext(dbContextBuilder.Options);
+            var context = new BaseDbContext(dbContextBuilder.Options);
             #endregion
 
 
