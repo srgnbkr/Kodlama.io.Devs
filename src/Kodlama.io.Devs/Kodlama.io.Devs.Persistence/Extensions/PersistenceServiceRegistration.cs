@@ -23,6 +23,8 @@ namespace Kodlama.io.Devs.Persistence.Extensions
                                                         configuration.GetConnectionString("KodlamaIOConnectionString")));
 
             services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
 
 
             //Apiyi her başlattığımızda sahte data ekler.

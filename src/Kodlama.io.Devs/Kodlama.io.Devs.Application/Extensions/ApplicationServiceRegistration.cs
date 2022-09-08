@@ -1,7 +1,12 @@
-﻿using Core.Application.Pipelines.Validation;
+﻿using Core.Application.Pipelines.Authorization;
+using Core.Application.Pipelines.Validation;
+using Core.Security.JWT;
 using FluentValidation;
+using Kodlama.io.Devs.Application.Features.Authorizations.Rules;
 using Kodlama.io.Devs.Application.Features.Languages.Rules;
+using Kodlama.io.Devs.Application.Services.AuthService;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -21,13 +26,18 @@ namespace Kodlama.io.Devs.Application.Extensions
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddScoped<LanguageBusinessRules>();
+            services.AddScoped<AuthorizationsBusinessRules>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CacheRemovingBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+
+            services.AddScoped<IAuthService, AuthManager>();
+            services.AddTransient<ITokenHelper, JwtHelper>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             return services;
 

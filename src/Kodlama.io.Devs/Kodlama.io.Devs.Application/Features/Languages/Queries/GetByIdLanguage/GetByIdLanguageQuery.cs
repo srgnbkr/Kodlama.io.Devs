@@ -37,7 +37,7 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Queries.GetByIdLanguage
             /// <returns></returns>
             public async Task<LanguageGetByIdDto> Handle(GetByIdLanguageQuery request, CancellationToken cancellationToken)
             {
-                Language? language = await _languageRepository.GetAsync(x => x.Id == request.Id);
+                Language language = await _languageRepository.GetAsync(x => x.Id == request.Id);
 
                 _languageBusinessRules.LanguageShouldExistWhenRequested(language);
 
