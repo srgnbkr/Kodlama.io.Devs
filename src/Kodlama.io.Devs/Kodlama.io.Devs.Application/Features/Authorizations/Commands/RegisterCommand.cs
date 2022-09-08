@@ -18,6 +18,7 @@ namespace Kodlama.io.Devs.Application.Features.Authorizations.Commands
     public class RegisterCommand : IRequest<RegisteredDto>
     {
         public UserForRegisterDto UserForRegisterDto { get; set; }
+        public string IPAddress { get; set; }
 
         public class RegisterCommandHandler : IRequestHandler<RegisterCommand, RegisteredDto>
         {
@@ -51,13 +52,19 @@ namespace Kodlama.io.Devs.Application.Features.Authorizations.Commands
                 };
 
                 User createdUser = await _userRepository.AddAsync(user);
+
                 AccessToken createdAccessToken = await _authService.CreateAccessToken(createdUser);
 
-                RegisteredDto registeredDto = new RegisteredDto
-                {
-                    AccessToken = createdAccessToken
+                RefreshToken createdRefreshToken = await _authService.CreateRefreshToken(createdUser, request.IPAddress);
+                RefreshToken addedRefreshToken = await _authService.AddRefreshToken(createdRefreshToken);
+
+                RegisteredDto registeredDto = new()
+                { 
+                    AccessToken = createdAccessToken, RefreshToken = addedRefreshToken 
                 };
                 return registeredDto;
+
+
             }
         }
     }

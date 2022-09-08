@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Kodlama.io.Devs.Application.Features.Authorizations.DTOs
 {
-    public class RegisteredDto
+    public class RegisteredDto : RefreshedTokensDto
     {
-        public AccessToken AccessToken { get; set; }
+        
     }
 }

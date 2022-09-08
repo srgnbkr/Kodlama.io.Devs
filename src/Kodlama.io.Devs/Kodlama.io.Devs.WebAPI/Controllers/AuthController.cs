@@ -1,4 +1,5 @@
 ﻿using Core.Security.DTOs;
+using Core.Security.Entities;
 using Kodlama.io.Devs.Application.Features.Authorizations.Commands;
 using Kodlama.io.Devs.Application.Features.Authorizations.DTOs;
 using Microsoft.AspNetCore.Http;
@@ -15,11 +16,24 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
         {
             RegisterCommand registerCommand = new RegisterCommand
             {
-                UserForRegisterDto = userForRegisterDto
+                UserForRegisterDto = userForRegisterDto, IPAddress = getIpAddress()
             };
 
             RegisteredDto registeredDto = await Mediator.Send(registerCommand);
+            setRefreshTokenToCookie(registeredDto.RefreshToken);
             return Created("", registeredDto.AccessToken);
+        }
+
+
+        private string getRefreshTokenFromCookies()
+        {
+            return Request.Cookies["refreshToken"];
+        }
+
+        private void setRefreshTokenToCookie(RefreshToken refreshToken)
+        {
+            CookieOptions cookieOptions = new() { HttpOnly = true, Expires = DateTime.UtcNow.AddDays(7) };
+            Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
         }
     }
 }

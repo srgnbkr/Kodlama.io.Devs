@@ -15,11 +15,13 @@ namespace Kodlama.io.Devs.Application.Services.AuthService
     {
         private readonly ITokenHelper _tokenHelper;
         private readonly IUserOperationClaimRepository _userOperationClaimRepository;
+        private readonly IRefreshTokenRepository _refreshTokenRepository;
 
-        public AuthManager(IUserOperationClaimRepository userOperationClaimRepository,ITokenHelper tokenHelper)
+        public AuthManager(IUserOperationClaimRepository userOperationClaimRepository,ITokenHelper tokenHelper, IRefreshTokenRepository refreshTokenRepository)
         {
             _tokenHelper = tokenHelper;
             _userOperationClaimRepository = userOperationClaimRepository;
+            _refreshTokenRepository = refreshTokenRepository;
         }
 
         public async Task<AccessToken> CreateAccessToken(User user)
@@ -36,5 +38,19 @@ namespace Kodlama.io.Devs.Application.Services.AuthService
             AccessToken accessToken = _tokenHelper.CreateToken(user, operationClaims);
             return accessToken;
         }
+
+        public async Task<RefreshToken> AddRefreshToken(RefreshToken refreshToken)
+        {
+            RefreshToken addedRefreshToken = await _refreshTokenRepository.AddAsync(refreshToken);
+            return addedRefreshToken;
+        }
+
+        public Task<RefreshToken> CreateRefreshToken(User user, string ipAddress)
+        {
+            RefreshToken refreshToken = _tokenHelper.CreateRefreshToken(user, ipAddress);
+            return Task.FromResult(refreshToken);
+        }
+
+
     }
 }
