@@ -1,5 +1,4 @@
-﻿using Bogus.DataSets;
-using Kodlama.io.Devs.Domain.Entities;
+﻿using Core.Security.Entities;
 using Kodlama.io.Devs.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -11,15 +10,16 @@ using System.Threading.Tasks;
 
 namespace Kodlama.io.Devs.Persistence.EntityConfigurations
 {
-    public class LanguageEntityConfiguration : BaseEntityConfiguration<Language>
+    public class OperationClaimEntityConfiguration : BaseEntityConfiguration<OperationClaim>
     {
-        public override void Configure(EntityTypeBuilder<Language> builder)
+        public override void Configure(EntityTypeBuilder<OperationClaim> builder)
         {
             base.Configure(builder);
+            builder.ToTable("OperationClaims", BaseDbContext.DEFAULT_SCHEMA);
+
+            
             
 
-            builder.ToTable("Languages",BaseDbContext.DEFAULT_SCHEMA);
-            
         }
     }
 }

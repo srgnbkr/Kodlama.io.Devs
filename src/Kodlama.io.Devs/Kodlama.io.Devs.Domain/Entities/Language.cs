@@ -10,6 +10,7 @@ namespace Kodlama.io.Devs.Domain.Entities
     public class Language : Entity
     {
         public string Name { get; set; }
+        public virtual ICollection<Framework> Frameworks {get;set;}
         public Language()
         {
 

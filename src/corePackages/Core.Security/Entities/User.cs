@@ -27,11 +27,12 @@ namespace Core.Security.Entities
             RefreshTokens = new HashSet<RefreshToken>();
         }
 
-        public User(int id, string firstName, string lastName, string email, byte[] passwordSalt, byte[] passwordHash,
+        public User(int id,bool isActive, string firstName, string lastName, string email, byte[] passwordSalt, byte[] passwordHash,
                     bool status, AuthenticatorType authenticatorType) : this()
         {
             Id = id;
             FirstName = firstName;
+            IsActive = isActive;
             LastName = lastName;
             Email = email;
             PasswordSalt = passwordSalt;
