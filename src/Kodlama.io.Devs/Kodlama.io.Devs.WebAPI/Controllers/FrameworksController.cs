@@ -1,6 +1,7 @@
 ﻿using Core.Application.Requests;
 using Core.Persistence.Dynamic;
 using Kodlama.io.Devs.Application.Features.Frameworks.Commands.CreateFramework;
+using Kodlama.io.Devs.Application.Features.Frameworks.Commands.UpdateFramework;
 using Kodlama.io.Devs.Application.Features.Frameworks.DTOs;
 using Kodlama.io.Devs.Application.Features.Frameworks.Models;
 using Kodlama.io.Devs.Application.Features.Frameworks.Queries.GetListFramework;
@@ -14,12 +15,12 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
     [ApiController]
     public class FrameworksController : BaseController
     {
-        //[HttpPost("Add")]
-        //public async Task<IActionResult> Add([FromBody] CreateFrameworkCommand createFrameworkCommand)
-        //{
-        //    CreateFrameworkDto createFrameworkDto = await Mediator.Send(createFrameworkCommand);
-        //    return Created("", createFrameworkDto);
-        //}
+        [HttpPost("Add")]
+        public async Task<IActionResult> Add([FromBody] CreateFrameworkCommand createFrameworkCommand)
+        {
+            CreateFrameworkDto createFrameworkDto = await Mediator.Send(createFrameworkCommand);
+            return Created("", createFrameworkDto);
+        }
 
         [HttpGet("GetList")]
         public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
@@ -37,6 +38,13 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
             GetListFrameworkByDynamicQuery  getListFrameworkByDynamicQuery = new GetListFrameworkByDynamicQuery { PageRequest = pageRequest, Dynamic = dynamic };
             FrameworkListModel frameworkListModel = await Mediator.Send(getListFrameworkByDynamicQuery);
             return Ok(frameworkListModel);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateFrameworkCommand updateFrameworkCommand)
+        {
+            UpdateFrameworkDto updateFrameworkDto = await Mediator.Send(updateFrameworkCommand);
+            return Ok(updateFrameworkDto);
         }
     }
 }

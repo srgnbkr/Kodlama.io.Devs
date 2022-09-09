@@ -32,8 +32,8 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
             return Created("", result);
         }
 
+
         [HttpPut]
-        
         public async Task<IActionResult> Update([FromBody] UpdateLanguageCommand updateLanguageCommand)
         {
             UpdateLanguageDto result = await Mediator.Send(updateLanguageCommand);
