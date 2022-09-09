@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kodlama.io.Devs.Application.Features.Authorizations.Commands
+namespace Kodlama.io.Devs.Application.Features.Authorizations.Commands.Register
 {
     public class RegisterCommand : IRequest<RegisteredDto>
     {
@@ -26,7 +26,7 @@ namespace Kodlama.io.Devs.Application.Features.Authorizations.Commands
             private readonly AuthorizationsBusinessRules _authorizationsBusinessRules;
             private readonly IAuthService _authService;
 
-            public RegisterCommandHandler(IUserRepository userRepository,AuthorizationsBusinessRules authorizationsBusinessRules,IAuthService authService)
+            public RegisterCommandHandler(IUserRepository userRepository, AuthorizationsBusinessRules authorizationsBusinessRules, IAuthService authService)
             {
                 _userRepository = userRepository;
                 _authorizationsBusinessRules = authorizationsBusinessRules;
@@ -59,8 +59,10 @@ namespace Kodlama.io.Devs.Application.Features.Authorizations.Commands
                 RefreshToken addedRefreshToken = await _authService.AddRefreshToken(createdRefreshToken);
 
                 RegisteredDto registeredDto = new()
-                { 
-                    AccessToken = createdAccessToken, RefreshToken = addedRefreshToken 
+                {
+                    AccessToken = createdAccessToken,
+                    RefreshToken = addedRefreshToken
+                   
                 };
                 return registeredDto;
 

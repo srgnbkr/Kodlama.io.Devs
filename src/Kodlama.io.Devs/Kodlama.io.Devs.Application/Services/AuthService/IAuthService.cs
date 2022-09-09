@@ -13,5 +13,6 @@ namespace Kodlama.io.Devs.Application.Services.AuthService
         Task<AccessToken> CreateAccessToken(User user);
         public Task<RefreshToken> CreateRefreshToken(User user, string ipAddress);
         public Task<RefreshToken> AddRefreshToken(RefreshToken refreshToken);
+        public Task DeleteOldRefreshTokens(int userId);
     }
 }

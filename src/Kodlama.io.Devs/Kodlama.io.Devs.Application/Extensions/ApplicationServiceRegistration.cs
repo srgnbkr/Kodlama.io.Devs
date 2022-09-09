@@ -5,6 +5,7 @@ using FluentValidation;
 using Kodlama.io.Devs.Application.Features.Authorizations.Rules;
 using Kodlama.io.Devs.Application.Features.Languages.Rules;
 using Kodlama.io.Devs.Application.Services.AuthService;
+using Kodlama.io.Devs.Application.Services.UserService;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,6 +37,8 @@ namespace Kodlama.io.Devs.Application.Extensions
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             services.AddScoped<IAuthService, AuthManager>();
+            services.AddScoped<IUserService, UserManager>();
+
             services.AddTransient<ITokenHelper, JwtHelper>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
