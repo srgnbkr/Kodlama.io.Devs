@@ -14,12 +14,12 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
     [ApiController]
     public class FrameworksController : BaseController
     {
-        [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromBody] CreateFrameworkCommand createFrameworkCommand)
-        {
-            CreateFrameworkDto createFrameworkDto = await Mediator.Send(createFrameworkCommand);
-            return Created("", createFrameworkDto);
-        }
+        //[HttpPost("Add")]
+        //public async Task<IActionResult> Add([FromBody] CreateFrameworkCommand createFrameworkCommand)
+        //{
+        //    CreateFrameworkDto createFrameworkDto = await Mediator.Send(createFrameworkCommand);
+        //    return Created("", createFrameworkDto);
+        //}
 
         [HttpGet("GetList")]
         public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)

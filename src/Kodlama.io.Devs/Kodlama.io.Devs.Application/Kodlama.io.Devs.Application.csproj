@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Frameworks\Models\" />
-    <Folder Include="Features\Frameworks\Rules\" />
     <Folder Include="Features\Frameworks\Profiles\" />
   </ItemGroup>
 

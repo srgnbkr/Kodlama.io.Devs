@@ -3,6 +3,7 @@ using Core.Application.Pipelines.Validation;
 using Core.Security.JWT;
 using FluentValidation;
 using Kodlama.io.Devs.Application.Features.Authorizations.Rules;
+using Kodlama.io.Devs.Application.Features.Frameworks.Rules;
 using Kodlama.io.Devs.Application.Features.Languages.Rules;
 using Kodlama.io.Devs.Application.Services.AuthService;
 using Kodlama.io.Devs.Application.Services.UserService;
@@ -28,6 +29,7 @@ namespace Kodlama.io.Devs.Application.Extensions
 
             services.AddScoped<LanguageBusinessRules>();
             services.AddScoped<AuthorizationsBusinessRules>();
+            services.AddScoped<FrameworkBusinessRules>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));

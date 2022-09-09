@@ -18,7 +18,8 @@ namespace Kodlama.io.Devs.Persistence.Contexts
 
         public DbSet<Language> Languages { get; set; }
         public DbSet<Framework> Frameworks { get; set; }
-        
+        public DbSet<SocialMedia> SocialMedias { get; set; }
+
         public DbSet<User> Users { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
@@ -42,14 +43,14 @@ namespace Kodlama.io.Devs.Persistence.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                var connStr = "Server=(localdb)\\MSSQLLocalDB;Database=KodlamaIoDB; Trusted_Connection=True;";
-                optionsBuilder.UseSqlServer(connStr, opt =>
-                {
-                    opt.EnableRetryOnFailure();
-                });
-            }
+            //if (!optionsBuilder.IsConfigured)
+            //{
+            //    var connStr = "Server=(localdb)\\MSSQLLocalDB;Database=KodlamaIoDB; Trusted_Connection=True;";
+            //    optionsBuilder.UseSqlServer(connStr, opt =>
+            //    {
+            //        opt.EnableRetryOnFailure();
+            //    });
+            //}
 
         }
 

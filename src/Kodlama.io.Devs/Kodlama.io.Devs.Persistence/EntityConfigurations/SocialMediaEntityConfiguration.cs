@@ -11,15 +11,15 @@ using System.Threading.Tasks;
 
 namespace Kodlama.io.Devs.Persistence.EntityConfigurations
 {
-    public class UserEntityConfiguration : BaseEntityConfiguration<User>
+    public class SocialMediaEntityConfiguration : BaseEntityConfiguration<SocialMedia>
     {
-        public override void Configure(EntityTypeBuilder<User> builder)
+        public override void Configure(EntityTypeBuilder<SocialMedia> builder)
         {
             base.Configure(builder);
-            builder.ToTable("Users", BaseDbContext.DEFAULT_SCHEMA);
+            builder.ToTable("SocialMedias", BaseDbContext.DEFAULT_SCHEMA);
+            builder.HasOne(m => m.User).WithMany(m => m.SocialMedias).HasForeignKey(m => m.UserId);
             
-           
-            
+
             
         }
     }

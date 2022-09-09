@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Kodlama.io.Devs.Application.Features.Frameworks.DTOs;
+using Kodlama.io.Devs.Application.Features.Frameworks.Rules;
 using Kodlama.io.Devs.Application.Services.Repositories;
 using Kodlama.io.Devs.Domain.Entities;
 using MediatR;
@@ -21,18 +22,26 @@ namespace Kodlama.io.Devs.Application.Features.Frameworks.Commands.CreateFramewo
         public class CreateFrameworkCommandHandler : IRequestHandler<CreateFrameworkCommand, CreateFrameworkDto>
         {
             private readonly IMapper _mapper;
-            private readonly IFrameworkRepository _frameworkRepositoru;
+            private readonly IFrameworkRepository _frameworkRepository;
+            private readonly FrameworkBusinessRules _frameworkBusinessRules;
 
-            public CreateFrameworkCommandHandler(IMapper mapper, IFrameworkRepository frameworkRepositoru)
+            public CreateFrameworkCommandHandler(
+                IMapper mapper, 
+                IFrameworkRepository frameworkRepository,
+                FrameworkBusinessRules frameworkBusinessRules
+                )
             {
                 _mapper = mapper;
-                _frameworkRepositoru = frameworkRepositoru;
+                _frameworkRepository = frameworkRepository;
+                _frameworkBusinessRules = frameworkBusinessRules;
             }
 
             public async Task<CreateFrameworkDto> Handle(CreateFrameworkCommand request, CancellationToken cancellationToken)
             {
+                await _frameworkBusinessRules.FrameworkNameCanNotBeDuplicatedWhenInserted(request.Name);
+
                 Framework mappedFramework = _mapper.Map<Framework>(request);
-                Framework createFramework =  await _frameworkRepositoru.AddAsync(mappedFramework);
+                Framework createFramework =  await _frameworkRepository.AddAsync(mappedFramework);
                 CreateFrameworkDto createFrameworkDto = _mapper.Map<CreateFrameworkDto>(createFramework);
                 return createFrameworkDto;
             }
