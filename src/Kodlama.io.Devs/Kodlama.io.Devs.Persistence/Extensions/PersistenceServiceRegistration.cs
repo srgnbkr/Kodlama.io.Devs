@@ -26,6 +26,7 @@ namespace Kodlama.io.Devs.Persistence.Extensions
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddScoped<IFrameworkRepository,FrameworkRepository>();
 
 
             //Apiyi her başlattığımızda sahte data ekler.

@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Core.Security.Entities;
 using Kodlama.io.Devs.Domain.Entities;
 using Kodlama.io.Devs.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -32,13 +33,15 @@ namespace Kodlama.io.Devs.Persistence.SeedDataBogus
 
             #region BogusExample
             //Eklentide diller olmadığı için ekleyemedim. Kullanıcı oluşturuken çok yararlı olacak :)
-            //var languages = new Faker<Language>("tr")
-            //    .RuleFor(i => i.Name, i => i.Commerce.Product()).Generate(10);
+            // var languages = new Faker<Language>("tr")
+            //     .RuleFor(i => i.Name, i => i.Commerce.Product()).Generate(10);
             #endregion
 
+            
 
-            //await context.AddRangeAsync(languages);
-            //await context.SaveChangesAsync();
+
+            await context.AddRangeAsync();
+            await context.SaveChangesAsync();
         }
     }
 }

@@ -19,4 +19,10 @@
     <ProjectReference Include="..\Kodlama.io.Devs.Domain\Kodlama.io.Devs.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Frameworks\Models\" />
+    <Folder Include="Features\Frameworks\Rules\" />
+    <Folder Include="Features\Frameworks\Profiles\" />
+  </ItemGroup>
+
 </Project>
