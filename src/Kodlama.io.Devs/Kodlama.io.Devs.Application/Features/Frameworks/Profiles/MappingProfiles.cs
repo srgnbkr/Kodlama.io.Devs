@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Core.Persistence.Paging;
 using Kodlama.io.Devs.Application.Features.Frameworks.Commands.CreateFramework;
+using Kodlama.io.Devs.Application.Features.Frameworks.Commands.DeleteFramework;
 using Kodlama.io.Devs.Application.Features.Frameworks.Commands.UpdateFramework;
 using Kodlama.io.Devs.Application.Features.Frameworks.DTOs;
 using Kodlama.io.Devs.Application.Features.Frameworks.Models;
@@ -27,6 +28,9 @@ namespace Kodlama.io.Devs.Application.Features.Frameworks.Profiles
 
             CreateMap<Framework, UpdateFrameworkDto>().ReverseMap();
             CreateMap<Framework, UpdateFrameworkCommand>().ReverseMap();
+
+            CreateMap<Framework,DeleteFrameworkDto>().ReverseMap();
+            CreateMap<Framework, DeleteFrameworkCommand>().ReverseMap();
     
         }
     }

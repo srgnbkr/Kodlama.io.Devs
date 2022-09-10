@@ -1,6 +1,7 @@
 ﻿using Core.Application.Requests;
 using Core.Persistence.Dynamic;
 using Kodlama.io.Devs.Application.Features.Frameworks.Commands.CreateFramework;
+using Kodlama.io.Devs.Application.Features.Frameworks.Commands.DeleteFramework;
 using Kodlama.io.Devs.Application.Features.Frameworks.Commands.UpdateFramework;
 using Kodlama.io.Devs.Application.Features.Frameworks.DTOs;
 using Kodlama.io.Devs.Application.Features.Frameworks.Models;
@@ -40,11 +41,18 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
             return Ok(frameworkListModel);
         }
 
-        [HttpPut]
+        [HttpPut("Update")]
         public async Task<IActionResult> Update([FromBody] UpdateFrameworkCommand updateFrameworkCommand)
         {
             UpdateFrameworkDto updateFrameworkDto = await Mediator.Send(updateFrameworkCommand);
             return Ok(updateFrameworkDto);
+        }
+
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> Delete([FromBody] DeleteFrameworkCommand deleteFrameworkCommand)
+        {
+            DeleteFrameworkDto deleteFrameworkDto = await Mediator.Send(deleteFrameworkCommand);
+            return Ok(deleteFrameworkDto);
         }
     }
 }
