@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Core.Security.Entities;
 using Kodlama.io.Devs.Application.Features.SocialMedias.Commands.CreateSocialMedia;
+using Kodlama.io.Devs.Application.Features.SocialMedias.Commands.DeleteSocialMedia;
 using Kodlama.io.Devs.Application.Features.SocialMedias.Commands.UpdateSocialMedia;
 using Kodlama.io.Devs.Application.Features.SocialMedias.DTOs;
 using System;
@@ -20,6 +21,9 @@ namespace Kodlama.io.Devs.Application.Features.SocialMedias.Profiles
 
             CreateMap<SocialMedia,UpdateSocialMediaDto>().ReverseMap();
             CreateMap<SocialMedia, UpdateSocialMediaCommand>().ReverseMap();
+
+            CreateMap<SocialMedia, DeleteSocialMediaDto>().ReverseMap();
+            CreateMap<SocialMedia, DeleteSocialMediaCommand>().ReverseMap();
         }
     }
 }
