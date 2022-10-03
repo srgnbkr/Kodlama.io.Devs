@@ -20,6 +20,7 @@ namespace Kodlama.io.Devs.Application.Features.SocialMedias.Commands.CreateSocia
         public string GithubUrl { get; set; }
         public bool IsActive { get; set; }
 
+        
         public class CreateSocialMediaCommandHandler : IRequestHandler<CreateSocialMediaCommand, CreateSocialMediaDto>
         {
             private readonly ISocialMediaRepository _socialMediaRepository;
@@ -33,12 +34,22 @@ namespace Kodlama.io.Devs.Application.Features.SocialMedias.Commands.CreateSocia
                 _socialMediaBusinessRules = socialMediaBusinessRules;
             }
 
+            /// <summary>
+            /// Create Social Media
+            /// </summary>
+            /// <param name="request"></param>
+            /// <param name="cancellationToken"></param>
+            /// <returns></returns>
             public async Task<CreateSocialMediaDto> Handle(CreateSocialMediaCommand request, CancellationToken cancellationToken)
             {
+                //Check if the user has a social media account
                 await _socialMediaBusinessRules.GithubUrlCanNotBeDuplicatedWhenInserted(request.GithubUrl);
 
+                //Create Social Media
                 SocialMedia mappedSocialMedia = _mapper.Map<SocialMedia>(request);
+                //Add Social Media
                 SocialMedia createSocialMedia = await _socialMediaRepository.AddAsync(mappedSocialMedia);
+                //Map Social Media
                 CreateSocialMediaDto createSocialMediaDto = _mapper.Map<CreateSocialMediaDto>(createSocialMedia);
                 
                 return createSocialMediaDto;

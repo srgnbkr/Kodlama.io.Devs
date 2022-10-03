@@ -14,17 +14,25 @@ namespace Kodlama.io.Devs.Application.Features.Frameworks.Commands.CreateFramewo
 {
     public class CreateFrameworkCommand : IRequest<CreateFrameworkDto>
     {
+        #region Properties
         public int LanguageId { get; set; }
         public string Name { get; set; }
         public string ImageUrl { get; set; }
         public bool IsActive { get; set; }
+        #endregion
+
+
+
 
         public class CreateFrameworkCommandHandler : IRequestHandler<CreateFrameworkCommand, CreateFrameworkDto>
         {
+            #region Fields
             private readonly IMapper _mapper;
             private readonly IFrameworkRepository _frameworkRepository;
             private readonly FrameworkBusinessRules _frameworkBusinessRules;
+            #endregion
 
+            #region Ctor
             public CreateFrameworkCommandHandler(
                 IMapper mapper, 
                 IFrameworkRepository frameworkRepository,
@@ -35,16 +43,30 @@ namespace Kodlama.io.Devs.Application.Features.Frameworks.Commands.CreateFramewo
                 _frameworkRepository = frameworkRepository;
                 _frameworkBusinessRules = frameworkBusinessRules;
             }
+            #endregion
 
+            #region Method
+            /// <summary>
+            /// Create Framework Command Handler
+            /// </summary>
+            /// <param name="request"></param>
+            /// <param name="cancellationToken"></param>
+            /// <returns></returns>
             public async Task<CreateFrameworkDto> Handle(CreateFrameworkCommand request, CancellationToken cancellationToken)
             {
+                
                 await _frameworkBusinessRules.FrameworkNameCanNotBeDuplicatedWhenInserted(request.Name);
 
+                
                 Framework mappedFramework = _mapper.Map<Framework>(request);
+                
                 Framework createFramework =  await _frameworkRepository.AddAsync(mappedFramework);
+               
                 CreateFrameworkDto createFrameworkDto = _mapper.Map<CreateFrameworkDto>(createFramework);
                 return createFrameworkDto;
             }
+
+            #endregion
         }
 
     }

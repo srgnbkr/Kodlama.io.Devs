@@ -28,9 +28,15 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Commands.SoftDeleteLang
                 _languageRepository = languageRepository;
                 _mapper = mapper;
             }
-
+            /// <summary>
+            /// This method is used to soft delete a language.
+            /// </summary>
+            /// <param name="request"></param>
+            /// <param name="cancellationToken"></param>
+            /// <returns></returns>
             public async Task<SoftDeleteLanguageDto> Handle(SoftDeleteLanguageCommand request, CancellationToken cancellationToken)
             {
+                //TODO: Add validation for the request
                 Language mappedLanguage = _mapper.Map<Language>(request);
                 mappedLanguage.IsActive = false;
                 Language softDeleteLanguage = await _languageRepository.UpdateAsync(mappedLanguage);

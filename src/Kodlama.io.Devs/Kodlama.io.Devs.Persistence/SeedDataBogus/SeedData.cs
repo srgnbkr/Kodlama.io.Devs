@@ -10,13 +10,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
+using Core.Security.DTOs;
+using Core.Security.Hashing;
+using Org.BouncyCastle.Math.EC.Rfc7748;
 
 namespace Kodlama.io.Devs.Persistence.SeedDataBogus
 {
     internal class SeedData
     {
         /// <summary>
-        /// Veritabanına elimizle eklemek yerine, Bogusla Fake Datalar Oluşturabiliyoruz. Basit  olalak ekledim.
+        /// Seed data for the database
         /// </summary>
         /// <param name="configuration"></param>
         /// <returns></returns>
@@ -30,18 +34,24 @@ namespace Kodlama.io.Devs.Persistence.SeedDataBogus
             var context = new BaseDbContext(dbContextBuilder.Options);
             #endregion
 
+            
 
             #region BogusExample
-            //Eklentide diller olmadığı için ekleyemedim. Kullanıcı oluşturuken çok yararlı olacak :)
-            // var languages = new Faker<Language>("tr")
-            //     .RuleFor(i => i.Name, i => i.Commerce.Product()).Generate(10);
-            #endregion
+
+
 
             
+            
+
+
+            #endregion
+
+
 
 
             await context.AddRangeAsync();
             await context.SaveChangesAsync();
+
         }
     }
 }

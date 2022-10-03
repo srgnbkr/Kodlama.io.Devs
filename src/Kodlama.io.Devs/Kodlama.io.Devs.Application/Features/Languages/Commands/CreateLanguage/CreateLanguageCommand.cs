@@ -30,12 +30,22 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Commands.CreateLanguage
                 _languageBusinessRules = languageBusinessRules;
             }
 
+            /// <summary>
+            /// This method create new language
+            /// </summary>
+            /// <param name="request"></param>
+            /// <param name="cancellationToken"></param>
+            /// <returns></returns>
             public async Task<CreateLanguageDto> Handle(CreateLanguageCommand request, CancellationToken cancellationToken)
             {
+                // Check language name is exist
                 await _languageBusinessRules.LanguageNameCanNotBeDuplicatedWhenInserted(request.Name);
 
+                // Map request to entity
                 Language mappedLanguage = _mapper.Map<Language>(request);
+                // Create new language
                 Language createLanguage = await _languageRepository.AddAsync(mappedLanguage);
+                // Map entity to dto
                 CreateLanguageDto createLanguageDto = _mapper.Map<CreateLanguageDto>(createLanguage);
 
                 return createLanguageDto;
