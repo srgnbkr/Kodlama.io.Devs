@@ -17,7 +17,9 @@ namespace Kodlama.io.Devs.Persistence.EntityConfigurations
             base.Configure(builder);
             builder.ToTable("UserOperationClaims", BaseDbContext.DEFAULT_SCHEMA);
             
-            builder.HasOne(u => u.User).WithMany(u => u.UserOperationClaims).HasForeignKey(u => u.UserId);
+            builder.HasOne(u => u.User)
+                .WithMany(u => u.UserOperationClaims)
+                .HasForeignKey(u => u.UserId);
             
             
             

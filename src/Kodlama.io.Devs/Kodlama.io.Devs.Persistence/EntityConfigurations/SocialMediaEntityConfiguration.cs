@@ -17,7 +17,10 @@ namespace Kodlama.io.Devs.Persistence.EntityConfigurations
         {
             base.Configure(builder);
             builder.ToTable("SocialMedias", BaseDbContext.DEFAULT_SCHEMA);
-            builder.HasOne(m => m.User).WithMany(m => m.SocialMedias).HasForeignKey(m => m.UserId);
+            
+            builder.HasOne(m => m.User)
+                .WithMany(m => m.SocialMedias)
+                .HasForeignKey(m => m.UserId);
             
 
             

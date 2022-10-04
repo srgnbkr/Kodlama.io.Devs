@@ -15,7 +15,7 @@ namespace Kodlama.io.Devs.Persistence.EntityConfigurations
         public override void Configure(EntityTypeBuilder<Framework> builder)
         {
             base.Configure(builder);
-            builder.ToTable("Framewokrs",BaseDbContext.DEFAULT_SCHEMA);
+            builder.ToTable("Frameworks",BaseDbContext.DEFAULT_SCHEMA);
 
             builder.HasOne(i => i.Language)
                 .WithMany(i => i.Frameworks)
