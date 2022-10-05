@@ -23,6 +23,12 @@
   <ItemGroup>
     <Folder Include="Features\Frameworks\Models\" />
     <Folder Include="Features\Frameworks\Profiles\" />
+    <Folder Include="Features\UserOperationClaims\Commands\" />
+    <Folder Include="Features\UserOperationClaims\DTOs\" />
+    <Folder Include="Features\UserOperationClaims\Models\" />
+    <Folder Include="Features\UserOperationClaims\Rules\" />
+    <Folder Include="Features\UserOperationClaims\Profile\" />
+    <Folder Include="Features\UserOperationClaims\Queries\" />
   </ItemGroup>
 
 </Project>
