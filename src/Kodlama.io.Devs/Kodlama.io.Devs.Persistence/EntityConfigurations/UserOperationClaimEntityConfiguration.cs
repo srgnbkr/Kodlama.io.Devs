@@ -20,9 +20,10 @@ namespace Kodlama.io.Devs.Persistence.EntityConfigurations
             builder.HasOne(u => u.User)
                 .WithMany(u => u.UserOperationClaims)
                 .HasForeignKey(u => u.UserId);
-            
-            
-            
+           
+
+
+
         }
     }
 }

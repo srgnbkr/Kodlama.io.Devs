@@ -3,6 +3,7 @@ using Core.Application.Pipelines.Authorization;
 using Kodlama.io.Devs.Application.Features.Languages.DTOs;
 using Kodlama.io.Devs.Application.Features.Languages.Rules;
 using Kodlama.io.Devs.Application.Services.Repositories;
+using static Kodlama.io.Devs.Application.Constants.ClaimConstant;
 using Kodlama.io.Devs.Domain.Entities;
 using MediatR;
 using System;
@@ -16,10 +17,9 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Commands.CreateLanguage
     public class CreateLanguageCommand : IRequest<CreateLanguageDto>, ISecuredRequest
     {
         public string Name { get; set; }
-        public bool IsActive { get; set; }
 
-        //Succesfuly
-        public string[] Roles => new[] { "Admin" };
+
+        public string[] Roles => new string[] { Admin, LanguageClaims.LanguageAdd };
 
         public class CreateLanguageCommandHandler : IRequestHandler<CreateLanguageCommand, CreateLanguageDto>
         {
@@ -27,7 +27,8 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Commands.CreateLanguage
             private readonly IMapper _mapper;
             private readonly LanguageBusinessRules _languageBusinessRules;
 
-            public CreateLanguageCommandHandler(ILanguageRepository languageRepository, IMapper mapper, LanguageBusinessRules languageBusinessRules)
+            public CreateLanguageCommandHandler(ILanguageRepository languageRepository, IMapper mapper,
+                LanguageBusinessRules languageBusinessRules)
             {
                 _languageRepository = languageRepository;
                 _mapper = mapper;
@@ -40,7 +41,8 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Commands.CreateLanguage
             /// <param name="request"></param>
             /// <param name="cancellationToken"></param>
             /// <returns></returns>
-            public async Task<CreateLanguageDto> Handle(CreateLanguageCommand request, CancellationToken cancellationToken)
+            public async Task<CreateLanguageDto> Handle(CreateLanguageCommand request,
+                CancellationToken cancellationToken)
             {
                 // Check language name is exist
                 await _languageBusinessRules.LanguageNameCanNotBeDuplicatedWhenInserted(request.Name);
@@ -56,4 +58,16 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Commands.CreateLanguage
             }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -48,7 +48,7 @@ namespace Kodlama.io.Devs.Application.Features.Authorizations.Commands.Register
                     PasswordHash = passWordHash,
                     PasswordSalt = passwordSalt,
                     Status = true,
-                    IsActive = true
+                    
                 };
 
                 User createdUser = await _userRepository.AddAsync(user);

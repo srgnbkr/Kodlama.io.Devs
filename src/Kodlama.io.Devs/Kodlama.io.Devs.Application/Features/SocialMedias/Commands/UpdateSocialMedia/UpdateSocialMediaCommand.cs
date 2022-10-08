@@ -16,7 +16,7 @@ namespace Kodlama.io.Devs.Application.Features.SocialMedias.Commands.UpdateSocia
         public int Id { get; set; }
         public int UserId { get; set; }
         public string GithubUrl { get; set; }
-        public bool IsActive { get; set; }
+        
 
         public class UpdateSocialMediaCommandHandler : IRequestHandler<UpdateSocialMediaCommand, UpdateSocialMediaDto>
         {

@@ -10,6 +10,6 @@ namespace Kodlama.io.Devs.Application.Features.OperationClaims.DTOs
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool IsActive { get; set; }
+        
     }
 }

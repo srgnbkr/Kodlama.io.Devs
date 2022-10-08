@@ -33,7 +33,7 @@ namespace Core.Security.Entities
         {
             Id = id;
             FirstName = firstName;
-            IsActive = isActive;
+            
             LastName = lastName;
             Email = email;
             PasswordSalt = passwordSalt;

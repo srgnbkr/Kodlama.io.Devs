@@ -18,7 +18,7 @@ namespace Kodlama.io.Devs.Application.Features.SocialMedias.Commands.CreateSocia
         
         public int UserId { get; set; }
         public string GithubUrl { get; set; }
-        public bool IsActive { get; set; }
+        
 
         
         public class CreateSocialMediaCommandHandler : IRequestHandler<CreateSocialMediaCommand, CreateSocialMediaDto>

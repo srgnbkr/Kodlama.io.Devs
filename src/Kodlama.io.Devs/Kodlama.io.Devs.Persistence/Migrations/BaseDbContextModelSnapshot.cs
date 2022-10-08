@@ -33,9 +33,6 @@ namespace Kodlama.io.Devs.Persistence.Migrations
                     b.Property<string>("ActivationKey")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("IsVerified")
                         .HasColumnType("bit");
 
@@ -57,9 +54,6 @@ namespace Kodlama.io.Devs.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -75,9 +69,6 @@ namespace Kodlama.io.Devs.Persistence.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("IsVerified")
                         .HasColumnType("bit");
@@ -111,9 +102,6 @@ namespace Kodlama.io.Devs.Persistence.Migrations
 
                     b.Property<DateTime>("Expires")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<string>("ReasonRevoked")
                         .HasColumnType("nvarchar(max)");
@@ -151,9 +139,6 @@ namespace Kodlama.io.Devs.Persistence.Migrations
                     b.Property<string>("GithubUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -181,9 +166,6 @@ namespace Kodlama.io.Devs.Persistence.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -208,9 +190,6 @@ namespace Kodlama.io.Devs.Persistence.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<int>("OperationClaimId")
                         .HasColumnType("int");
@@ -238,9 +217,6 @@ namespace Kodlama.io.Devs.Persistence.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<int>("LanguageId")
                         .HasColumnType("int");
 
@@ -251,7 +227,7 @@ namespace Kodlama.io.Devs.Persistence.Migrations
 
                     b.HasIndex("LanguageId");
 
-                    b.ToTable("Framewokrs", "dbo");
+                    b.ToTable("Frameworks", "dbo");
                 });
 
             modelBuilder.Entity("Kodlama.io.Devs.Domain.Entities.Language", b =>
@@ -261,9 +237,6 @@ namespace Kodlama.io.Devs.Persistence.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

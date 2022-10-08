@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Core.Security.Entities;
@@ -10,12 +11,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Kodlama.io.Devs.Application.Constants.ClaimConstant;
 
 namespace Kodlama.io.Devs.Application.Features.OperationClaims.Queries.GetListOperationClaim
 {
     public class GetListOperationClaimQuery : IRequest<OperationClaimListModel>
     {
         public PageRequest PageRequest { get; set; }
+
+        
 
         public class GetListOperationClaimHandler : IRequestHandler<GetListOperationClaimQuery, OperationClaimListModel>
         {

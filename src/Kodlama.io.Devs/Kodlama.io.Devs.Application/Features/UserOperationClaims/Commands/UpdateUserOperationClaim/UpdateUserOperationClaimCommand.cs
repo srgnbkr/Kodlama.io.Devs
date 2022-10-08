@@ -16,8 +16,7 @@ namespace Kodlama.io.Devs.Application.Features.UserOperationClaims.Commands.Upda
         public int Id { get; set; }
         public int UserId { get; set; }
         public int OperationClaimId { get; set; }
-        public bool IsActive { get; set; }
-
+        
         public class UpdateUserOperationClaimCommandHandler : IRequestHandler<UpdateUserOperationClaimCommand, UpdateUserOperationClaimDto>
         {
             #region Fields

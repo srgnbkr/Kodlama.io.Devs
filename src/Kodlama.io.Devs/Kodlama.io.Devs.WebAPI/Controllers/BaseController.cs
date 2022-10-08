@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Core.Security.Extensions;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kodlama.io.Devs.WebAPI.Controllers
@@ -8,14 +9,18 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
         private IMediator _mediator;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+
+       
         protected string getIpAddress()
         {
             if (Request.Headers.ContainsKey("X-Forwarded-For")) return Request.Headers["X-Forwarded-For"];
             return HttpContext.Connection.RemoteIpAddress?.MapToIPv4().ToString();
+        }
+        
+        protected int getUserIdFromRequest()
+        {
+            int userId = HttpContext.User.GetUserId();
+            return userId;
         }
     }
 

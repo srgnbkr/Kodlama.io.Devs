@@ -12,9 +12,7 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Commands.CreateLanguage
         public CreateLanguageCommandValidator()
         {
             RuleFor(c => c.Name).NotEmpty().WithMessage("Name is required");
-            RuleFor(c => c.IsActive).NotEmpty().WithMessage("IsActive is required");
-
-            RuleFor(c => c.IsActive).NotEmpty();
+            
         }
     }
 }

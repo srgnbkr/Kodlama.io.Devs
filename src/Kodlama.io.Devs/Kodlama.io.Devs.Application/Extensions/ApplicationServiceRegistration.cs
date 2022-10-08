@@ -1,4 +1,6 @@
 ﻿using Core.Application.Pipelines.Authorization;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Validation;
 using Core.Security.JWT;
 using FluentValidation;
@@ -37,16 +39,16 @@ namespace Kodlama.io.Devs.Application.Extensions
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CacheRemovingBehavior<,>));
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+            // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
+            // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CacheRemovingBehavior<,>));
+            // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             services.AddScoped<IAuthService, AuthManager>();
             services.AddScoped<IUserService, UserManager>();
 
             services.AddTransient<ITokenHelper, JwtHelper>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
 
             return services;
 

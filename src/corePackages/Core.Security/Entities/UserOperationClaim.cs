@@ -14,11 +14,11 @@ namespace Core.Security.Entities
         {
         }
 
-        public UserOperationClaim(int id, int userId, int operationClaimId,bool isActive) : base(id,isActive)
+        public UserOperationClaim(int id, int userId, int operationClaimId) : base(id)
         {
             UserId = userId;
             OperationClaimId = operationClaimId;
-            IsActive = isActive;
+
         }
     }
 }

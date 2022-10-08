@@ -10,5 +10,6 @@ namespace Core.Security.EmailAuthenticator
     {
         public Task<string> CreateEmailActivationKey();
         public Task<string> CreateEmailActivationCode();
+        
     }
 }

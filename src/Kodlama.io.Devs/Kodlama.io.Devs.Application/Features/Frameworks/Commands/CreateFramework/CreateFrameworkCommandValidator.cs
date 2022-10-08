@@ -13,7 +13,7 @@ namespace Kodlama.io.Devs.Application.Features.Frameworks.Commands.CreateFramewo
         {
             RuleFor(x => x.Name).MinimumLength(2).NotEmpty(); ;
             RuleFor(x => x.LanguageId).NotEmpty();
-            RuleFor(x => x.IsActive).NotEmpty();
+            
         }
     }
 }

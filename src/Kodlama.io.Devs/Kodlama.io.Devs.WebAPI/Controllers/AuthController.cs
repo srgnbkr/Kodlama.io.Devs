@@ -30,11 +30,11 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
         public async Task<IActionResult> Login([FromBody] UserForLoginDto userForLoginDto)
         {
             LoginCommand loginCommand = new() { UserForLoginDto = userForLoginDto, IPAddress = getIpAddress() };
-            LoggedDto loggedDto = await Mediator.Send(loginCommand);
+            LoggedDto result = await Mediator.Send(loginCommand);
 
-            if (loggedDto.RefreshToken is not null) setRefreshTokenToCookie(loggedDto.RefreshToken);
+            if (result.RefreshToken is not null) setRefreshTokenToCookie(result.RefreshToken);
 
-            return Ok(loggedDto.AccessToken);
+            return Ok(result.CreateResponseDto());
         }
 
 

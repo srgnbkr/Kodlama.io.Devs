@@ -26,7 +26,7 @@ namespace Kodlama.io.Devs.Domain.Entities
             LanguageId = languageId;
             Name = name;
             ImageUrl = imageUrl;
-            IsActive = isActive;
+            
         }
 
 

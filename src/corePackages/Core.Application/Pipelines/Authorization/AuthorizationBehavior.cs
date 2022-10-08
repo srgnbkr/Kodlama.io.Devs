@@ -14,6 +14,10 @@ namespace Core.Application.Pipelines.Authorization
     public class AuthorizationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
      where TRequest : IRequest<TResponse>, ISecuredRequest
     {
+        /// <summary>
+        /// Unauthorized . Claim Count 0 Dönüyordu 
+        /// "Microsoft.IdentityModel.Tokens" Version="6.23.1" Yükleyince Çözüldü
+        /// </summary>
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public AuthorizationBehavior(IHttpContextAccessor httpContextAccessor)
@@ -25,6 +29,7 @@ namespace Core.Application.Pipelines.Authorization
                                             RequestHandlerDelegate<TResponse> next)
         {
             List<string> roleClaims = _httpContextAccessor.HttpContext.User.ClaimRoles();
+           
 
             if (roleClaims == null) throw new AuthorizationException("Claims not found.");
 

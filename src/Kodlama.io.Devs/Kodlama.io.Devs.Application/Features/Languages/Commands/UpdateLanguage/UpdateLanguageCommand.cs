@@ -15,7 +15,7 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Commands.UpdateLanguage
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool IsActive { get; set; }
+       
 
         public class UpdateLanguageCommandHandler : IRequestHandler<UpdateLanguageCommand, UpdateLanguageDto>
         {

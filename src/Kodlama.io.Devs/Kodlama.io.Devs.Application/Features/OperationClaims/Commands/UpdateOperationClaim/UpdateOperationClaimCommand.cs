@@ -15,7 +15,7 @@ namespace Kodlama.io.Devs.Application.Features.OperationClaims.Commands.UpdateOp
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool IsActive { get; set; }
+        
 
         public class UpdateOperationClaimCommandHandler : IRequestHandler<UpdateOperationClaimCommand, UpdateOperationClaimDto>
         {

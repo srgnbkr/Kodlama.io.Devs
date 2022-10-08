@@ -38,7 +38,8 @@ namespace Kodlama.io.Devs.Persistence.SeedDataBogus
 
             #region BogusExample
 
-
+            
+            
 
             
             

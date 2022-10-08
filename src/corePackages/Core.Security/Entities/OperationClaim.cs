@@ -15,7 +15,7 @@ namespace Core.Security.Entities
         {
         }
 
-        public OperationClaim(int id, string name,bool isActive) : base(id,isActive)
+        public OperationClaim(int id, string name) : base(id)
         {
             
             Name = name;

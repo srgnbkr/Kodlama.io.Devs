@@ -17,7 +17,7 @@ namespace Kodlama.io.Devs.Application.Features.Frameworks.Commands.UpdateFramewo
         public int LanguageId { get; set; }
         public string ImageUrl { get; set; }
         public string Name { get; set; }
-        public bool IsActive { get; set; }
+        
 
         public class UpdateFrameworkCommandHandler : IRequestHandler<UpdateFrameworkCommand, UpdateFrameworkDto>
         {

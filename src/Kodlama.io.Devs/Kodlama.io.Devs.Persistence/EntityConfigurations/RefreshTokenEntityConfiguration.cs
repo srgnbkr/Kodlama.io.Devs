@@ -17,7 +17,9 @@ namespace Kodlama.io.Devs.Persistence.EntityConfigurations
             base.Configure(builder);
             builder.ToTable("RefreshTokens", BaseDbContext.DEFAULT_SCHEMA);
 
-            builder.HasOne(u => u.User).WithMany(u => u.RefreshTokens).HasForeignKey(u => u.UserId);
+            builder.HasOne(u => u.User)
+                .WithMany(u => u.RefreshTokens)
+                .HasForeignKey(u => u.UserId);
         }
     }
 }

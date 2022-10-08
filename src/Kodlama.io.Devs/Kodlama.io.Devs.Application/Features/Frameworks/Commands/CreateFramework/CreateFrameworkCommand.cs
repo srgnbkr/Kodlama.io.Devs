@@ -18,7 +18,7 @@ namespace Kodlama.io.Devs.Application.Features.Frameworks.Commands.CreateFramewo
         public int LanguageId { get; set; }
         public string Name { get; set; }
         public string ImageUrl { get; set; }
-        public bool IsActive { get; set; }
+        
         #endregion
 
 

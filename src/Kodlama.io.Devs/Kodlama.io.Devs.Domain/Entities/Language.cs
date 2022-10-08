@@ -20,7 +20,7 @@ namespace Kodlama.io.Devs.Domain.Entities
         {
             Id = id;
             Name = name;
-            IsActive = isActive;
+            
         }
     }
 }

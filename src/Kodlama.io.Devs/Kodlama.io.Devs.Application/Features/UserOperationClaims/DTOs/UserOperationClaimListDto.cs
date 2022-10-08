@@ -9,8 +9,7 @@ namespace Kodlama.io.Devs.Application.Features.UserOperationClaims.DTOs
     public class UserOperationClaimListDto
     {
         public int Id { get; set; }
-        public string UserEmail { get; set; }
-        public string OperatinClaimName { get; set; }
-        public bool IsActive { get; set; }
+        public int UserId { get; set; }
+        public int OperationClaimId { get; set; }
     }
 }

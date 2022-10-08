@@ -18,10 +18,10 @@ namespace Core.Security.Entities
 
         }
 
-        public SocialMedia(int id,bool isActive,int userId,string githubUrl):this()
+        public SocialMedia(int id,int userId,string githubUrl):this()
         {
             Id = id;
-            IsActive = isActive;
+            
             UserId = userId;
             GithubUrl = githubUrl;
 

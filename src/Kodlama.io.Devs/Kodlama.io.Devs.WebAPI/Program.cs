@@ -1,3 +1,5 @@
+using Core.CrossCuttingConcers.Exceptions;
+using Core.Security;
 using Core.Security.Encryption;
 using Core.Security.JWT;
 using Kodlama.io.Devs.Application.Extensions;
@@ -11,10 +13,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-
+builder.Services.AddSecurityServices();
 builder.Services.AddApplicationServices();
 
 builder.Services.AddPersistenceServices(builder.Configuration);
+
+builder.Services.AddHttpContextAccessor();
+
+
 
 
 
@@ -59,6 +65,7 @@ builder.Services.AddSwaggerGen(opt =>
     });
 });
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -67,6 +74,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+if (app.Environment.IsProduction())
+    app.ConfigureCustomExceptionMiddleware();
 
 app.UseHttpsRedirection();
 

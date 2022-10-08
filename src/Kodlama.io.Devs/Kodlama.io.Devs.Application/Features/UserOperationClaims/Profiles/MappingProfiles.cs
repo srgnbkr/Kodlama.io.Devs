@@ -27,9 +27,8 @@ namespace Kodlama.io.Devs.Application.Features.UserOperationClaims.Profiles
             CreateMap<UserOperationClaim, DeleteUserOperationClaimDto>().ReverseMap();
             CreateMap<UserOperationClaim, DeleteUserOperaitonClaimCommand>().ReverseMap();
 
-            CreateMap<UserOperationClaim, UserOperationClaimListDto>()
-                .ForMember(x => x.UserEmail, opt => opt.MapFrom(x => x.User.Email))
-                .ForMember(x => x.OperatinClaimName, opt => opt.MapFrom(x => x.OperationClaim.Name));
+            CreateMap<UserOperationClaim, UserOperationClaimListDto>().ReverseMap();
+                
             
             CreateMap<IPaginate<UserOperationClaim>, UserOperationClaimListModel>().ReverseMap();
         }

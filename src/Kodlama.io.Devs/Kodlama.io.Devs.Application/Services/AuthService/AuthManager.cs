@@ -40,10 +40,10 @@ namespace Kodlama.io.Devs.Application.Services.AuthService
         {
             IPaginate<UserOperationClaim> userOperationClaims =
             await _userOperationClaimRepository.GetListAsync(u => u.UserId == user.Id,
-                                                            include: u =>
-                                                                u.Include(u => u.OperationClaim)
-           );
-            List<OperationClaim> operationClaims =
+                                                             include: u =>
+                                                                 u.Include(u => u.OperationClaim)
+            );
+            IList<OperationClaim> operationClaims =
                 userOperationClaims.Items.Select(u => new OperationClaim
                 { Id = u.OperationClaim.Id, Name = u.OperationClaim.Name }).ToList();
 
