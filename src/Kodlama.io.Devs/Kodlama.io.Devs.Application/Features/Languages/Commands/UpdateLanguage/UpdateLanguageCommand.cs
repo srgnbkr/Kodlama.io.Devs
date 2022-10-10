@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Kodlama.io.Devs.Application.Features.Languages.DTOs;
 using Kodlama.io.Devs.Application.Services.Repositories;
 using Kodlama.io.Devs.Domain.Entities;
+using static Kodlama.io.Devs.Application.Constants.ClaimConstant;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,11 +13,12 @@ using System.Threading.Tasks;
 
 namespace Kodlama.io.Devs.Application.Features.Languages.Commands.UpdateLanguage
 {
-    public class UpdateLanguageCommand : IRequest<UpdateLanguageDto>
+    public class UpdateLanguageCommand : IRequest<UpdateLanguageDto>,ISecuredRequest
     {
         public int Id { get; set; }
         public string Name { get; set; }
-       
+
+        public string[] Roles => new[] { Admin, LanguageClaims.LanguageUpdate };
 
         public class UpdateLanguageCommandHandler : IRequestHandler<UpdateLanguageCommand, UpdateLanguageDto>
         {

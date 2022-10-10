@@ -32,6 +32,7 @@ namespace Kodlama.io.Devs.Application.Features.Languages.Commands.DeleteLanguage
             
             public async Task<DeleteLanguageDto> Handle(DeleteLanguageCommand request, CancellationToken cancellationToken)
             {
+                
                 Language mappedLanguage = _mapper.Map<Language>(request);
                 Language deletedLanguage = await _languageRepository.DeleteAsync(mappedLanguage);
                 DeleteLanguageDto deleteLanguageDto = _mapper.Map<DeleteLanguageDto>(deletedLanguage);

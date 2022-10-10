@@ -15,5 +15,7 @@ namespace Kodlama.io.Devs.Application.Constants
             public const string LanguageUpdate = "language.update";
             public const string LanguageDelete = "language.delete";
         }
+
+     
     }
 }
