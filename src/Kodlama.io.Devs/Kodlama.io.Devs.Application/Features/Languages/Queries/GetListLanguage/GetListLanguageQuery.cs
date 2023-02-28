@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Kodlama.io.Devs.Application.Features.Languages.Models;
@@ -14,9 +15,14 @@ using System.Threading.Tasks;
 
 namespace Kodlama.io.Devs.Application.Features.Languages.Queries.GetListLanguage
 {
-    public class GetListLanguageQuery : IRequest<LanguageListModel>
+    public class GetListLanguageQuery : IRequest<LanguageListModel>,ICachableRequest
     {
         public PageRequest PageRequest { get; set; }
+
+        public bool BypassCache { get; }
+        public string CacheKey => "language-list";
+        public TimeSpan? SlidingExpiration { get; }
+
 
         public class GetListLanguageQueryHandler : IRequestHandler<GetListLanguageQuery, LanguageListModel>
         {
